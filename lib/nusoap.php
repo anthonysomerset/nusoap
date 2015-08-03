@@ -6626,6 +6626,8 @@ class nusoap_parser extends nusoap_base {
 			xml_set_character_data_handler($this->parser,'character_data');
 
 			// Parse the XML file.
+			$xml = preg_replace( '/[[:^print:]]/', "", $xml);
+
 			if(!xml_parse($this->parser,$xml,true)){
 			    // Display an error message.
 			    $err = sprintf('XML error parsing SOAP payload on line %d: %s',
